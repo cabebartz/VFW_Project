@@ -13,9 +13,26 @@ Term # 1207 -->
 	</head>
 	<body>
 		<h1>Monthly Bill Tracker</h1>
-		<!-- toDo add form info -->
 		<form action="#" method="post">
-		</form>
+			<fieldset>
+				<legend>Add A Bill</legend>
+					<li>
+						<label for="category">Bill Category</label>
+						<select>
+							<option value="credit">Credit</option>
+							<option value="rent">Rent</option>
+							<option value="utilities">Utilities</option>
+							<option value="misc">Misc</option>
+						</select>
+					</li>
+					<ul>
+						<li><label for="billName">Name of Bill:</label><input type="text" id="billName" /></li>
+						<li><label for="accountNum">Account Number:</label><input type="text" id="accountNum" /></li>
+						<li><label for="billAmount">Ammount Due:</label><input type="text" id="billAmount" /></li>
+						<li><label for="dueDate">Date Due:</label><input type="date" id="dueDate" /></li>
+					</ul>
+			</fieldset>
+		</form>	
 	</body>
 
 </html>
