@@ -16,21 +16,20 @@ Term # 1207 -->
 		<form action="#" method="post">
 			<fieldset>
 				<legend>Add A Bill</legend>
+				<ul>
 					<li>
 						<label for="category">Bill Category</label>
-						<select>
+						<select id="category">
 							<option value="credit">Credit</option>
 							<option value="rent">Rent</option>
 							<option value="utilities">Utilities</option>
 							<option value="misc">Misc</option>
 						</select>
 					</li>
-					<ul>
-						<li><label for="billName">Name of Bill:</label><input type="text" id="billName" /></li>
-						<li><label for="accountNum">Account Number:</label><input type="text" id="accountNum" /></li>
-						<li><label for="billAmount">Ammount Due:</label><input type="text" id="billAmount" /></li>
-						<li><label for="dueDate">Date Due:</label><input type="date" id="dueDate" /></li>
-					</ul>
+					<li><label for="billName">Name of Bill:</label><input type="text" id="billName" /></li>
+					<li><label for="accountNum">Account Number:</label><input type="text" id="accountNum" /></li>
+					<li><label for="billAmount">Ammount Due:</label><input type="text" id="billAmount" /></li>
+					<li><label for="dueDate">Date Due:</label><input type="date" id="dueDate" /></li>
 					<li>Is Bill Paid or Unpaid?
 						<ul>
 							<li><input type="radio" value="Paid" id="paid" name="billPaid"/><label for="paid">Paid</label></li>
@@ -38,14 +37,15 @@ Term # 1207 -->
 						</ul>
 					</li>
 					<li>
-					<label for="priority">Priority</label><input type="range" name="priority" min="1" max="10" />
+						<label for="priority">Priority</label><input type="range" name="priority" min="1" max="10" />
 					</li>
-					<!--  May input break before textarea -->
-					<label for="comments">Additional Notes:</label><textarea id="comments"></textarea>
+						<!--  May input break before textarea -->
+						<label for="comments">Additional Notes:</label><textarea id="comments"></textarea>
 					</li>
 					<li>
 						<input type="hidden" value ="true" />
 					</li>
+				</ul>
 			</fieldset>
 			<input type="submit" value="Submit Bill" /></br>
 			<!-- Input href -->
