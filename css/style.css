@@ -6,10 +6,12 @@ additem.html
 July 8th 2012
 */
 body {
+	/* font-family will be inherited by all other css tags*/
 	font-family: helvetica, arial, san-serif;
 	background: #b6d8e6;
 }
 h1 {
+	/* css for title */
 	font-size: 24px;
 	color: #fde8d0;
 	font-weight: bold;
@@ -24,45 +26,57 @@ h1 {
 	background: #7da7d9;     
 }
 h2 {
+	/* css for description */
 	font-size: 18px;
 	text-align: center;
 	color: #555555;
 	margin: 50px 5px;
 }
 p {
+	/* css for additem link */
 	text-align: center;
 	margin: 50px 5px;
 }
 fieldset{
+	/* css for fieldset box */
 	font-size: 14px;
 	background: #fde8d0;
 	line-height: 30px;
 }
 li{
+	/* move list items to the left--makes room for input to be on same line */
 	margin-left: -18px;
 }
 select{
+	/* moves category drop down to right and resizes */
 	float: right;
 	width: 128px;
 }
 input{
+	/* move input fields to right */
 	float: right;
 }
 textarea{
+	/* move comment box to right */
 	float: right;
 }
 input[id="dueDate"]{
+	/* resize date input */
 	width: 121px;
 }
 a{
+	/* add outline to links */
 	outline: 1px dotted purple;
 }
 a[id="displayData"]{
-	margin-left: 75px;
+	/* moves display data link to right */
+	float: right;
 }
 a[id="addNew"]{
-	margin-left: 50px;
+	/* moves add another bill link to right */
+	float: right;
 }
 input[id="submit"]{
+	/* move submit button back to left because it inherited float: right; properties */
 	float: left;
 }
