@@ -14,6 +14,7 @@ h1 {
 	color: #fde8d0;
 	font-weight: bold;
 	text-align: center;
+	letter-spacing: .5px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
 	margin: 5px 5px;
 	border: 5px double #555555;
