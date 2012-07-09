@@ -1,4 +1,4 @@
-// VFW 1207
+ // VFW 1207
 // Cabe Bartz
 // Project 2
 
@@ -17,16 +17,13 @@ window.addEventListener("DOMContentLoaded", function () {
 		saveData = ElId('submit');
 	// create category group elements and give options
 	function makeCategory() {
-		//formTag is array of form tags
-		var	selectLi = ElId('select'),
-			createSelect = document.createElement('select'),
-			i,
-			j,
-			makeOption = document.createElement('option'),
-			optText = billCategories[i];
+		var selectLi = ElId('select'),
+			createSelect = document.createElement('select');	
 		createSelect.setAttribute("id", "categories");
-		for (i = 0, j = billCategories.length; i < j; i++) {
-			makeOption.setAttribute("value", billCategories[i]);
+		for (var i = 0, j = billCategories.length; i < j; i++) {
+			var makeOption = document.createElement('option'),
+				optText = billCategories[i];
+			makeOption.setAttribute("value", optText);
 			makeOption.innerHTML = optText;
 			createSelect.appendChild(makeOption);
 		}
