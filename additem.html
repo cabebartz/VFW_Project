@@ -10,6 +10,7 @@ Term # 1207 -->
 		<meta name="robots" content="index, follow" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		<title>Monthly Bill Tracker</title>
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
 		<h1>Monthly Bill Tracker</h1>
@@ -22,31 +23,21 @@ Term # 1207 -->
 			<fieldset>
 				<legend>Add A Bill</legend>
 				<ul>
-					<!-- Statically generate options list -->
-					<!-- <li>
-						<label for="category">Bill Category</label>
-						<select id="category">
-							<option value="credit">Credit</option>
-							<option value="rent">Rent</option>
-							<option value="utilities">Utilities</option>
-							<option value="misc">Misc</option>
-						</select>
-					</li>  -->
 					<li id="select"><label for="category">Pick A Category:</label></li>
 					<li><label for="billName">Name of Bill:</label><input type="text" id="billName" /></li>
 					<li><label for="accountNum">Account Number:</label><input type="text" id="accountNum" /></li>
 					<li><label for="billAmount">Ammount Due: $</label><input type="text" id="billAmount" /></li>
 					<li><label for="dueDate">Date Due:</label><input type="date" id="dueDate" /></li>
-					<li>Is Bill Paid or Unpaid?
+					<li id="billPaid">Is Bill Paid or Unpaid?</br>
 						<ul>
 							<li><input type="radio" value="Paid" id="paid" name="billPaid"/><label for="paid">Paid</label></li>
 							<li><input type="radio" value="Not Paid" id="not paid" name="billPaid"/><label for="not paid">Not Paid</label></li>
 						</ul>
 					</li>
 					<li>
-						<label for="priority">Priority</label><input type="range" id="priority" name="priority" min="1" max="10" />
+						<label for="priority">Priority:</label><input type="range" id="priority" name="priority" min="1" max="10" />
 					</li>
-						<!--  May input break before textarea -->
+					<li>
 						<label for="comments">Additional Notes:</label><textarea id="comments"></textarea>
 					</li>
 					<li>

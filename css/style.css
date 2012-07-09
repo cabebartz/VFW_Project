@@ -1,0 +1,67 @@
+/*
+VFW 1207
+Cabe Bartz
+Project 2
+additem.html
+July 8th 2012
+*/
+body {
+	font-family: helvetica, arial, san-serif;
+	background: #b6d8e6;
+}
+h1 {
+	font-size: 24px;
+	color: #fde8d0;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+	margin: 5px 5px;
+	border: 5px double #555555;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+	padding: 5px;
+	background: #7da7d9;     
+}
+h2 {
+	font-size: 18px;
+	text-align: center;
+	color: #555555;
+	margin: 50px 5px;
+}
+p {
+	text-align: center;
+	margin: 50px 5px;
+}
+fieldset{
+	font-size: 14px;
+	background: #fde8d0;
+	line-height: 30px;
+}
+li{
+	margin-left: -18px;
+}
+select{
+	float: right;
+	width: 128px;
+}
+input{
+	float: right;
+}
+textarea{
+	float: right;
+}
+input[id="dueDate"]{
+	width: 121px;
+}
+a{
+	outline: 1px dotted purple;
+}
+a[id="displayData"]{
+	margin-left: 75px;
+}
+a[id="addNew"]{
+	margin-left: 50px;
+}
+input[id="submit"]{
+	float: left;
+}
