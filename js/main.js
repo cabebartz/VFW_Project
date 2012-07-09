@@ -3,32 +3,29 @@
 // Project 2
 
 //DOM Listener
-window.addEventListener("DOMContentLoaded", function(){
-	//variables
-	var billCategories = ["Credit", "Rent", "Utilities", "Misc"],
-		paidValue;
-	//Link and click events
-	var displayData = ElId('displayData');
-	displayData.addEventListener("click", getData);
-	var clear = ElId('clear');
-	clear.addEventListener("click", clearData);
-	var saveData = ElId('submit');
-	saveData.addEventListener("click", storeData);
+window.addEventListener("DOMContentLoaded", function () {
 	//getElementByID
-	function ElId(x){
+	function ElId(x) {
 		var anElement = document.getElementById(x);
 		return anElement;
 	}
+	//variables
+	var billCategories = ["Credit", "Rent", "Utilities", "Misc"],
+		paidValue,
+		displayData = ElId('displayData'),
+		clear = ElId('clear'),
+		saveData = ElId('submit');
 	// create category group elements and give options
-	function makeCategory(){
+	function makeCategory() {
 		//formTag is array of form tags
-		var formTag = document.getElementsByTagName("form"),
-			selectLi = ElId('select'),
-			createSelect = document.createElement('select');
+		var	selectLi = ElId('select'),
+			createSelect = document.createElement('select'),
+			i,
+			j,
+			makeOption = document.createElement('option'),
+			optText = billCategories[i];
 		createSelect.setAttribute("id", "categories");
-		for (var i = 0, j = billCategories.length; i < j; i++){
-			var makeOption = document.createElement('option'),
-				optText = billCategories[i];
+		for (i = 0, j = billCategories.length; i < j; i++) {
 			makeOption.setAttribute("value", billCategories[i]);
 			makeOption.innerHTML = optText;
 			createSelect.appendChild(makeOption);
@@ -36,89 +33,101 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(createSelect);
 	}
 	// find radio button value
-	function getRadio(){
-		var radios = document.forms[0].billPaid;
-		for(var i = 0; i < radios.length; i++){
-			if(radios[i].checked){
+	function getRadio() {
+		var radios = document.forms[0].billPaid,
+			i;
+		for (i = 0; i < radios.length; i++) {
+			if (radios[i].checked) {
 				paidValue = radios[i].value;
-			}	
+			}
 		}
 	}
-	function toggle(b){
-		switch(b){
-			case "on":
-				ElId('billForm').style.display = "none";
-				ElId('clear').style.display = "inline";
-				ElId('displayData').style.display = "none";
-				ElId('addNew').style.display = "inline";
-				break;
-			case "off":
-				ElId('billForm').style.display = "block";
-				ElId('clear').style.display = "inline";
-				ElId('displayData').style.display = "inline";
-				ElId('addNew').style.display = "none";
-				ElId('items').style.display = "none";
-				break;
-			default:
-				return false;
+	function toggle(b) {
+		switch (b) {
+		case "on":
+			ElId('billForm').style.display = "none";
+			ElId('clear').style.display = "inline";
+			ElId('displayData').style.display = "none";
+			ElId('addNew').style.display = "inline";
+			break;
+		case "off":
+			ElId('billForm').style.display = "block";
+			ElId('clear').style.display = "inline";
+			ElId('displayData').style.display = "inline";
+			ElId('addNew').style.display = "none";
+			ElId('items').style.display = "none";
+			break;
+		default:
+			return false;
 		}
 	}
 	//function to store data in local storage
-	function storeData(){
-		var id = Math.floor(Math.random() * 1000100001);
+	function storeData() {
+		var id = Math.floor(Math.random() * 1000100001),
+			item = {};
 		//store form fields in object
-		//object will contain arrat with form label and input value
+		//object will contain array with form label and input value
 		getRadio();
-		var item = {};
 		item.category = ["Bill Category:", ElId('categories').value];
 		item.billName = ["Bill Name:", ElId('billName').value];
 		item.accountNum = ["Account Number:", ElId('accountNum').value];
 		item.billAmount = ["Amount Due:", ElId('billAmount').value];
 		item.dueDate = ["Date Due:", ElId('dueDate').value];
-	 	item.billPaid = ["Is Bill Paid?", paidValue];
+		item.billPaid = ["Is Bill Paid?", paidValue];
 		item.priority = ["Priority:", ElId('priority').value];
 		item.comments = ["comments:", ElId('comments').value];
 		//Save into local storage and convert to string(JSON.stringify)
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Bill Saved");
 	}
-	function clearData(){
-		if(localStorage.length === 0){
+	function clearData() {
+		if (localStorage.length === 0) {
 			alert("No bills to clear!");
-		}else{
+		} else {
 			localStorage.clear();
 			alert("All bills have been cleared.");
 			window.location.reload();
 			return false;
 		}
 	}
-	function getData(){
+	function getData() {
 		toggle("on");
-		if(localStorage.length === 0){
+		if (localStorage.length === 0) {
 			alert("No bills to display!");
 		}
 		//see local storage data in browser
-		var makeDiv = document.createElement('div');
+		var makeDiv = document.createElement('div'),
+			makeList = document.createElement('ul'),
+			i,
+			j,
+			key = localStorage.key(i),
+			value = localStorage.getItem(key),
+			object = JSON.parse(value),
+			makeLi,
+			makeSubList,
+			a,
+			makeSubLi,
+			optSubText;
 		makeDiv.setAttribute("id", "items");
-		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
 		//ElId('items').style.display = "block";
-		for(var i =0, j = localStorage.length; i < j; i++){
+		for (i = 0, j = localStorage.length; i < j; i++) {
 			makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
-			var	key = localStorage.key(i),
-				value = localStorage.getItem(key),
-				object = JSON.parse(value),
-				makeSubList = document.createElement('ul');
+			makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
-			for(var a in object){
-				var makeSubLi = document.createElement('li');
+			for (a in object) {
+				makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
-				var optSubText = object[a][0] + " " + object[a][1];
+				optSubText = object[a][0] + " " + object[a][1];
 				makeSubLi.innerHTML = optSubText;
 			}
 		}
 	}
-	makeCategory();	
+	//click events and run makeCategory
+	clear.addEventListener("click", clearData);
+	displayData.addEventListener("click", getData);
+	saveData.addEventListener("click", storeData);
+	makeCategory();
 });
