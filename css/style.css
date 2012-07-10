@@ -37,46 +37,59 @@ p {
 	text-align: center;
 	margin: 50px 5px;
 }
-fieldset{
+a {
+	/* add outline to links */
+	outline: 1px dotted purple;
+}
+a[id="displayData"] {
+	/* moves display data link to right */
+	float: right;
+}
+a[id="addNew"] {
+	/* moves add another bill link to right */
+	float: right;
+}
+legend {
+	font-size: 10px;
+	background: #ddd;
+	margin: 0px;
+	padding: 0px 20px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+	text-transform: uppercase;
+}
+fieldset {
 	/* css for fieldset box */
 	font-size: 14px;
 	background: #fde8d0;
 	line-height: 30px;
+	margin: 10px 0 5px 0;
+	border-radius: 10px;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
-li{
+li {
 	/* move list items to the left--makes room for input to be on same line */
 	margin-left: -18px;
 }
-select{
+select {
 	/* moves category drop down to right and resizes */
 	float: right;
 	width: 128px;
 }
-input{
+input {
 	/* move input fields to right */
 	float: right;
 }
-textarea{
+textarea {
 	/* move comment box to right */
 	float: right;
 }
-input[id="dueDate"]{
+input[id="dueDate"] {
 	/* resize date input */
 	width: 121px;
 }
-a{
-	/* add outline to links */
-	outline: 1px dotted purple;
-}
-a[id="displayData"]{
-	/* moves display data link to right */
-	float: right;
-}
-a[id="addNew"]{
-	/* moves add another bill link to right */
-	float: right;
-}
-input[id="submit"]{
+
+input[id="submit"] {
 	/* move submit button back to left because it inherited float: right; properties */
 	float: left;
 }
