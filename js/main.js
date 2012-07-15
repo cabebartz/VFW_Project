@@ -150,7 +150,8 @@ window.addEventListener("DOMContentLoaded", function () {
 		var value = localStorage.getItem(this.key),
 			item = JSON.parse(value),
 			i,
-			radios = document.forms[0].billPaid;
+			radios = document.forms[0].billPaid,
+			editSubmit = ElId('submit');
 		toggle("off");
 		ElId('categories').value = item.category[1];
 		ElId('billName').value = item.billName[1];
@@ -165,7 +166,16 @@ window.addEventListener("DOMContentLoaded", function () {
 			}
 		ElId('priority').value = item.priority[1];
 		ElId('comments').value = item.comments[1];
+		// remove listener from save bill button
+		saveData.removeEventListener("click", storeData);
+		//change Submit Bill value to Submit Changes
+		ElId('submit').value = "Submit Changes";
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
 		}
+	}
+	function validate(){
+		
 	}
 	//click events and run makeCategory
 	clear.addEventListener("click", clearData);
