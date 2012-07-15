@@ -10,11 +10,13 @@ window.addEventListener("DOMContentLoaded", function () {
 		return anElement;
 	}
 	//variables
-	var billCategories = ["Credit", "Rent", "Utilities", "Misc"],
+	var billCategories = ["-- Pick A Category --", "Credit", "Rent", "Utilities", "Misc"],
 		paidValue,
 		displayData = ElId('displayData'),
 		clear = ElId('clear'),
-		saveData = ElId('submit');
+		saveData = ElId('submit'),
+		errMessage = ElId('errors');
+
 	// create category group elements and give options
 	function makeCategory() {
 		var selectLi = ElId('select'),
@@ -174,12 +176,82 @@ window.addEventListener("DOMContentLoaded", function () {
 		editSubmit.key = this.key;
 		}
 	}
-	function validate(){
-		
+	//check form before submitting
+	function validate(e){
+		var getCategory = ElId('categories'),
+			getName = ElId('billName'),
+			getAmount = ElId('billAmount'),
+			getDate = ElId('dueDate'),
+			getPaid = ElId('billPaid'),
+			//error messages
+			messageArray = [],
+			catError,
+			nameError,
+			amountError,
+			dateError,
+			paidError,
+			i,
+			j,
+			txt,
+			dollarRe = ^\$?-?0*(?:\d+(?!,)(?:\.\d{1,2})?|(?:\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?))$;
+			//reset error messages
+		errMessage.innerHTML = "";
+		getCategory.style.border = "1px solid red";
+		getName.style.border = "1px solid red";
+		getAmount.style.border = "1px solid red";
+		/*
+		getDate.style.border = "1px solid red";
+		getPaid.style.border = "1px solid red";
+		*/
+		//category validation
+		if(getCategory.value === "-- Pick A Category --"){
+			catError = "Please pick a category";
+			getCategory.style.border = "1px solid red";
+			messageArray.push(catError);
+		}
+		//bill Name validation
+		if (getName.value === ""){
+			nameError = "Please enter a bill name";
+			getName.style.border = "1px solid red";
+			messageArray.push(nameError);
+		}
+		//bill amount validation
+		if (!(dollarRe.exec(getAmount.value))){
+			amountError = "Please enter a amount due";
+			getAmount.style.border = "1px solid red";
+			messageArray.push(amountError);
+		}
+		// date validation
+		/*
+		if (getDate.value === ""){
+			dateError = "Please enter the due date";
+			getDate.style.border = "1px solid red";
+			messageArray.push(dateError);
+		}
+		// bill paid validation
+		if (getPaid.value === ""){
+			paidError = "Please choose a paid option";
+			getPaid.style.border = "1px solid red";
+			messageArray.push(paidError);
+		}
+		*/
+		//display errors if there is any
+		if(messageArray.length >= 1){
+			for(i = 0, j = messageArray.length; i < j; i++){
+				txt = document.createElement('li');
+				txt.innerHTML = messageArray[i];
+				errMessage.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		} else {
+			storeData();
+		}
+			
 	}
 	//click events and run makeCategory
 	clear.addEventListener("click", clearData);
 	displayData.addEventListener("click", getData);
-	saveData.addEventListener("click", storeData);
+	saveData.addEventListener("click", validate);
 	makeCategory();
 });
