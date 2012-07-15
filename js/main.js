@@ -163,7 +163,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		for (i = 0; i < radios.length; i++){
 			if(radios[i].value === "Paid" && item.billPaid[1] === "Paid"){
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value === "Not Paid" && item.billPaid[1] === "notpaid"){
+			} else if (radios[i].value === "Not Paid" && item.billPaid[1] === "Not Paid"){
 				radios[i].setAttribute("checked", "checked");
 			}
 		ElId('priority').value = item.priority[1];
@@ -182,7 +182,9 @@ window.addEventListener("DOMContentLoaded", function () {
 			getName = ElId('billName'),
 			getAmount = ElId('billAmount'),
 			getDate = ElId('dueDate'),
-			getPaid = ElId('billPaid'),
+			//getPaid = ElId('billPaid'),
+			getPaid = ElId('paid'),
+			getNotPaid = ElId('notPaid'),
 			//error messages
 			messageArray = [],
 			catError,
@@ -192,17 +194,15 @@ window.addEventListener("DOMContentLoaded", function () {
 			paidError,
 			i,
 			j,
-			txt,
-			dollarRe = ^\$?-?0*(?:\d+(?!,)(?:\.\d{1,2})?|(?:\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?))$;
+			txt;
 			//reset error messages
 		errMessage.innerHTML = "";
-		getCategory.style.border = "1px solid red";
-		getName.style.border = "1px solid red";
-		getAmount.style.border = "1px solid red";
-		/*
-		getDate.style.border = "1px solid red";
-		getPaid.style.border = "1px solid red";
-		*/
+		getCategory.style.border = "1px solid grey";
+		getName.style.border = "1px solid grey";
+		getAmount.style.border = "1px solid grey";
+		//getDate.style.border = "1px solid grey";
+		getPaid.style.border = "1px solid grey";
+		getNotPaid.style.border = "1px solid grey";
 		//category validation
 		if(getCategory.value === "-- Pick A Category --"){
 			catError = "Please pick a category";
@@ -216,8 +216,9 @@ window.addEventListener("DOMContentLoaded", function () {
 			messageArray.push(nameError);
 		}
 		//bill amount validation
+		var dollarRe = /^\d+\.\d{2}$/;
 		if (!(dollarRe.exec(getAmount.value))){
-			amountError = "Please enter a amount due";
+			amountError = "Please enter a amount due in XXX.XX format";
 			getAmount.style.border = "1px solid red";
 			messageArray.push(amountError);
 		}
@@ -228,13 +229,14 @@ window.addEventListener("DOMContentLoaded", function () {
 			getDate.style.border = "1px solid red";
 			messageArray.push(dateError);
 		}
-		// bill paid validation
-		if (getPaid.value === ""){
+		*/
+		//bill paid validation
+		if (!(paid.checked) && !(notPaid.checked)){
 			paidError = "Please choose a paid option";
 			getPaid.style.border = "1px solid red";
+			getNotPaid.style.border = "1px solid red";
 			messageArray.push(paidError);
 		}
-		*/
 		//display errors if there is any
 		if(messageArray.length >= 1){
 			for(i = 0, j = messageArray.length; i < j; i++){
