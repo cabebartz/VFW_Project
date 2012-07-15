@@ -104,7 +104,8 @@ window.addEventListener("DOMContentLoaded", function () {
 			makeSubList,
 			a,
 			makeSubLi,
-			optSubText;
+			optSubText,
+			linksLi = document.createElement('li');
 		makeDiv.setAttribute("id", "items");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
@@ -119,7 +120,51 @@ window.addEventListener("DOMContentLoaded", function () {
 				makeSubList.appendChild(makeSubLi);
 				optSubText = object[a][0] + " " + object[a][1];
 				makeSubLi.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
 			}
+		//make edit and delete links for local storage
+		makeItemLinks(localStorage.key(i), linksLi);
+		}
+	}
+	//makes edit and delete links for each local storage entry
+	function makeItemLinks(key, linksLi){
+		var editLink = document.createElement('a'),
+			editText = "Edit Bill",
+			deleteLink = document.createElement('a'),
+			deleteText = "Delete Bill";
+		//add edit bill link
+		editLink.href = "#";
+		editLink.key = key;
+		editLink.addEventListener("click", editBill);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		//add delete bill link
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		deleteLink.addEventListener("click", deleteBill);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+	}
+	//make edit local storage link work
+	function editBill(){
+		var value = localStorage.getItem(this.key),
+			item = JSON.parse(value),
+			i,
+			radios = document.forms[0].billPaid;
+		toggle("off");
+		ElId('categories').value = item.category[1];
+		ElId('billName').value = item.billName[1];
+		ElId('accountNum').value = item.accountNum[1];
+		ElId('billAmount').value = item.billAmount[1];
+		ElId('dueDate').value = item.dueDate[1];
+		for (i = 0; i < radios.length; i++){
+			if(radios[i].value === "Paid" && item.billPaid[1] === "Paid"){
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value === "Not Paid" && item.billPaid[1] === "notpaid"){
+				radios[i].setAttribute("checked", "checked");
+			}
+		ElId('priority').value = item.priority[1];
+		ElId('comments').value = item.comments[1];
 		}
 	}
 	//click events and run makeCategory
