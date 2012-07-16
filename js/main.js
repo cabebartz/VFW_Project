@@ -62,15 +62,14 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 	//function to store data in local storage
 	function storeData(key) {
-		var id,
-			item = {};
 		if(!key){
-			id = Math.floor(Math.random() * 1000100001);
+			var id = Math.floor(Math.random() * 100000001);
 		} else {
 			id = key
 		}
 		//store form fields in object
 		//object will contain array with form label and input value
+		var item = {};
 		getRadio();
 		item.category = ["Bill Category:", ElId('categories').value];
 		item.billName = ["Bill Name:", ElId('billName').value];
@@ -100,54 +99,50 @@ window.addEventListener("DOMContentLoaded", function () {
 			alert("No bills to display!");
 		}
 		//see local storage data in browser
-		var makeDiv = document.createElement('div'),
-			makeList = document.createElement('ul'),
-			i,
-			j,
-			key = localStorage.key(i),
-			value = localStorage.getItem(key),
-			object = JSON.parse(value),
-			makeLi,
-			makeSubList,
-			a,
-			makeSubLi,
-			optSubText,
-			linksLi = document.createElement('li');
+		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
+		var	makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
-		//ElId('items').style.display = "block";
-		for (i = 0, j = localStorage.length; i < j; i++) {
-			makeLi = document.createElement('li');
+		ElId('items').style.display = "block";
+		for (var i = 0, j = localStorage.length; i < j; i++) {
+			var makeLi = document.createElement('li');
+			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
-			makeSubList = document.createElement('ul');
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var object = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
-			for (a in object) {
-				makeSubLi = document.createElement('li');
+			for (var a in object) {
+				var makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
-				optSubText = object[a][0] + " " + object[a][1];
+				var optSubText = object[a][0] + " " + object[a][1];
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
 			}
-		//make edit and delete links for local storage
-		makeItemLinks(localStorage.key(i), linksLi);
+			//make edit and delete links for local storage
+			makeItemLinks(localStorage.key(i), linksLi);
 		}
 	}
 	//makes edit and delete links for each local storage entry
 	function makeItemLinks(key, linksLi){
-		var editLink = document.createElement('a'),
-			editText = "Edit Bill",
-			deleteLink = document.createElement('a'),
-			deleteText = "Delete Bill";
 		//add edit bill link
+		var editLink = document.createElement('a');	
 		editLink.href = "#";
 		editLink.key = key;
+		var editText = "Edit Bill";
 		editLink.addEventListener("click", editBill);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
+		// add break
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
 		//add delete bill link
+		var deleteLink = document.createElement('a');
 		deleteLink.href = "#";
 		deleteLink.key = key;
+		var deleteText = "Delete Bill";
 		deleteLink.addEventListener("click", deleteBill);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
@@ -179,6 +174,16 @@ window.addEventListener("DOMContentLoaded", function () {
 		ElId('submit').value = "Submit Changes";
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
+		}
+	}
+	function deleteBill (){
+		var ask = confirm("Are you sure you want to delete this bill?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert("Bill was deleted!");
+			window.location.reload();
+		} else {
+			alert("Bill was not deleted");
 		}
 	}
 	//check form before submitting
