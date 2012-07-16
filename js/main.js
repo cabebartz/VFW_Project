@@ -61,9 +61,14 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 	//function to store data in local storage
-	function storeData() {
-		var id = Math.floor(Math.random() * 1000100001),
+	function storeData(key) {
+		var id,
 			item = {};
+		if(!key){
+			id = Math.floor(Math.random() * 1000100001);
+		} else {
+			id = key
+		}
 		//store form fields in object
 		//object will contain array with form label and input value
 		getRadio();
@@ -247,7 +252,8 @@ window.addEventListener("DOMContentLoaded", function () {
 			e.preventDefault();
 			return false;
 		} else {
-			storeData();
+			//if no errors, run storeData
+			storeData(this.key);
 		}
 			
 	}
