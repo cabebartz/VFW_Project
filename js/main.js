@@ -171,7 +171,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		// remove listener from save bill button
 		saveData.removeEventListener("click", storeData);
 		//change Submit Bill value to Submit Changes
-		ElId('submit').value = "Submit Changes";
+		ElId('submit').value = "Edit Bill";
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
 		}
