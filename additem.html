@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- VFW Project 1
+<!-- VFW Project 3
 Cabe Bartz
 Term # 1207 -->
 <html>
@@ -22,14 +22,15 @@ Term # 1207 -->
 		<form action="#" method="post" id="billForm">
 			<fieldset>
 				<legend>Add A Bill</legend>
+				<div>* denotes required field</div>
 				<ul id="errors"></ul>
 				<ul>
-					<li id="select"><label for="categories">Pick A Category:</label></li>
-					<li><label for="billName">Name of Bill:</label><input type="text" id="billName" /></li>
+					<li id="select"><label for="categories">*Pick A Category:</label></li>
+					<li><label for="billName">*Name of Bill:</label><input type="text" id="billName" /></li>
 					<li><label for="accountNum">Account Number:</label><input type="text" id="accountNum" /></li>
-					<li><label for="billAmount">Amount Due: $</label><input type="text" id="billAmount" /></li>
-					<li><label for="dueDate">Date Due:</label><input type="date" id="dueDate" /></li>
-					<li id="billPaid">Is Bill Paid or Unpaid?</br>
+					<li><label for="billAmount">*Amount Due: $</label><input type="text" id="billAmount" /></li>
+					<li><label for="dueDate">*Date Due:</label><input type="date" id="dueDate" /></li>
+					<li id="billPaid">*Is Bill Paid or Unpaid?</br>
 						<ul>
 							<li><input type="radio" value="Paid" id="paid" name="billPaid"/><label for="paid">Paid</label></li>
 							<li><input type="radio" value="Not Paid" id="notPaid" name="billPaid"/><label for="notPaid">Not Paid</label></li>

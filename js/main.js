@@ -1,6 +1,6 @@
  // VFW 1207
 // Cabe Bartz
-// Project 2
+// Project 3
 
 //DOM Listener
 window.addEventListener("DOMContentLoaded", function () {
@@ -210,7 +210,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		getCategory.style.border = "1px solid grey";
 		getName.style.border = "1px solid grey";
 		getAmount.style.border = "1px solid grey";
-		//getDate.style.border = "1px solid grey";
+		getDate.style.border = "1px solid grey";
 		getPaid.style.border = "1px solid grey";
 		getNotPaid.style.border = "1px solid grey";
 		//category validation
@@ -233,13 +233,11 @@ window.addEventListener("DOMContentLoaded", function () {
 			messageArray.push(amountError);
 		}
 		// date validation
-		/*
 		if (getDate.value === ""){
 			dateError = "Please enter the due date";
 			getDate.style.border = "1px solid red";
 			messageArray.push(dateError);
 		}
-		*/
 		//bill paid validation
 		if (!(paid.checked) && !(notPaid.checked)){
 			paidError = "Please choose a paid option";
