@@ -215,32 +215,32 @@ window.addEventListener("DOMContentLoaded", function () {
 		getNotPaid.style.border = "1px solid grey";
 		//category validation
 		if(getCategory.value === "-- Pick A Category --"){
-			catError = "Please pick a category";
+			catError = alert("Please pick a category");
 			getCategory.style.border = "1px solid red";
 			messageArray.push(catError);
 		}
 		//bill Name validation
 		if (getName.value === ""){
-			nameError = "Please enter a bill name";
+			nameError = alert("Please enter a bill name");
 			getName.style.border = "1px solid red";
 			messageArray.push(nameError);
 		}
 		//bill amount validation
 		var dollarRe = /^\d+\.\d{2}$/;
 		if (!(dollarRe.exec(getAmount.value))){
-			amountError = "Please enter a amount due in XXX.XX format";
+			amountError = alert("Please enter amount due in format XXX.XX");
 			getAmount.style.border = "1px solid red";
 			messageArray.push(amountError);
 		}
 		// date validation
 		if (getDate.value === ""){
-			dateError = "Please enter the due date";
+			dateError = alert("Please enter the due date");
 			getDate.style.border = "1px solid red";
 			messageArray.push(dateError);
 		}
 		//bill paid validation
 		if (!(paid.checked) && !(notPaid.checked)){
-			paidError = "Please choose a paid option";
+			paidError = alert("Please choose a paid option");
 			getPaid.style.border = "1px solid red";
 			getNotPaid.style.border = "1px solid red";
 			messageArray.push(paidError);
