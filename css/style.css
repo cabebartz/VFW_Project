@@ -69,7 +69,8 @@ fieldset {
 }
 li {
 	/* move list items to the left--makes room for input to be on same line */
-	margin-left: -18px;
+	margin-left: -35px;
+	list-style-type: none;
 }
 select {
 	/* moves category drop down to right and resizes */
