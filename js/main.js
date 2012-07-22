@@ -96,7 +96,8 @@ window.addEventListener("DOMContentLoaded", function () {
 	function getData() {
 		toggle("on");
 		if (localStorage.length === 0) {
-			alert("No bills to display!");
+			alert("No bills to display so default data will be loaded");
+			autoFillData();
 		}
 		//see local storage data in browser
 		var makeDiv = document.createElement('div');
@@ -123,6 +124,13 @@ window.addEventListener("DOMContentLoaded", function () {
 			}
 			//make edit and delete links for local storage
 			makeItemLinks(localStorage.key(i), linksLi);
+		}
+	}
+	//add data to local storage if none exists
+	function autoFillData(){
+		for (var n in json){
+			var id = Math.floor(Math.random() * 100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
 	//makes edit and delete links for each local storage entry
