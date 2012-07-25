@@ -8,12 +8,19 @@ July 8th 2012
 body {
 	/* font-family will be inherited by all other css tags*/
 	font-family: helvetica, arial, san-serif;
-	background: #b6d8e6;
+	background-image: -webkit-gradient(
+	linear,
+	right top,
+	right bottom,
+	color-stop(1, #71B0B0),
+	color-stop(0.31, #265252),
+	color-stop(0, #61989E)
+	);
 }
 h1 {
 	/* css for title */
 	font-size: 24px;
-	color: #fde8d0;
+	color: #c7bd87;
 	font-weight: bold;
 	text-align: center;
 	letter-spacing: .5px;
@@ -23,13 +30,20 @@ h1 {
 	border-radius: 10px;
 	box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 	padding: 5px;
-	background: #7da7d9;     
+	background-image: -webkit-gradient(
+	linear,
+	right top,
+	right bottom,
+	color-stop(1, #BAB9B3),
+	color-stop(0.31, #919088),
+	color-stop(0, #D9D6C5)
+	);
 }
 h2 {
 	/* css for description */
 	font-size: 18px;
 	text-align: center;
-	color: #555555;
+	color: #b6bdbd;
 	margin: 50px 5px;
 }
 p {
@@ -50,8 +64,15 @@ a[id="addNew"] {
 	float: right;
 }
 legend {
-	font-size: 10px;
-	background: #ddd;
+	font-size: 10px;	
+	background-image: -webkit-gradient(
+	linear,
+	right top,
+	right bottom,
+	color-stop(1, #BAB9B3),
+	color-stop(0.31, #919088),
+	color-stop(0, #D9D6C5)
+	);
 	margin: 0px;
 	padding: 0px 20px;
 	border-radius: 10px;
@@ -61,7 +82,14 @@ legend {
 fieldset {
 	/* css for fieldset box */
 	font-size: 14px;
-	background: #fde8d0;
+	background-image: -webkit-gradient(
+	linear,
+	right top,
+	right bottom,
+	color-stop(1, #DED39E),
+	color-stop(0.31, #9E9A6A),
+	color-stop(0, #F0E9BB)
+	);
 	line-height: 30px;
 	margin: 10px 0 5px 0;
 	border-radius: 10px;
